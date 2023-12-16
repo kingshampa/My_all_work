@@ -1,0 +1,93 @@
+/* Style the navbar */
+.navbar {
+    background-color: #490bf3;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Style the logo */
+.logo img {
+    width: 400px; /* Set the width of the logo image */
+    height: auto; /* Maintain the aspect ratio of the logo */
+}
+
+/* Style the navbar links */
+.menu {
+    text-align: right; /* Align the menu links to the right */
+}
+
+.menu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* Change link color when hovering */
+.menu a:hover {
+    background-color: #ee0808;
+    color: rgb(97, 248, 10);
+}
+.rbuttan{
+    color: aqua;
+}
+
+/* Style the login and register buttons */
+.auth-buttons {
+    float: right;
+}
+
+#login-button, #register-button {
+    background-color: #fd13c3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 10px;
+    cursor: pointer;
+}
+
+#login-button:hover, #register-button:hover {
+    background-color: #32a07f;
+}
+
+#kingshuk{
+    text-align: center;
+}
+
+/* Reset some default styles for the page */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the footer */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer .container {
+    text-align: center;
+}
+
+/* Adjust the container width as needed */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Style the copyright text */
+.footer p {
+    margin: 0;
+}
+
