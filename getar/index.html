@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="kingshuk.js"></script>
+    <link rel="stylesheet" href="king.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>
+            <a target="_top" href="https://codepen.io/josetxu/full/jOQegyB" id="tuner-title">
+                <span>O</span><span>nline</span>
+                <span>G</span><span>uitar</span>
+                <span>T</span><span>uner</span>
+            </a>
+        </h1>
+        <a class="josetxu-btn" href="https://josetxu.com" target="_blank"></a>
+        <button id="e-classic"  class="change-guitar" onclick="changeGuitar(this.id)"></button>
+        <button id="e-electric" class="change-guitar active" onclick="changeGuitar(this.id)" disabled></button>
+    </header>
+    
+    <section>
+        <div class="tuner-body e-electric" id="guitar-body">
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s6"><span></span></button>
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s5"><span></span></button>
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s4"><span></span></button>
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s3"><span></span></button>
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s2"><span></span></button>
+            <button onmouseenter="pickString(this.id)" onclick="clickString(this.id)" class="string" id="s1"><span></span></button>
+            <div class="notes">
+                <span class="" id="s6Note">E</span>
+                <span class="" id="s5Note">A</span>
+                <span class="" id="s4Note">D</span>
+                <span class="" id="s3Note">G</span>
+                <span class="" id="s2Note">B</span>
+                <span class="" id="s1Note">E</span>
+            </div>
+            <div class="notes">
+                <span class="" id="s6Nota">MI</span>
+                <span class="" id="s5Nota">LA</span>
+                <span class="" id="s4Nota">RE</span>
+                <span class="" id="s3Nota">SOL</span>
+                <span class="" id="s2Nota">SI</span>
+                <span class="" id="s1Nota">MI</span>
+            </div>
+            <div id="move-pick"></div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="slider">
+            <input id="volume" type="range" min="0" max="1" value="0.5" step="0.1" oninput="setVolume(this.value)" onchange="setVolume(this.value)" autocomplete="off">
+            <div class="slider-value">5</div>		
+        </div>
+        <div class="buttons">
+            <button onfocus="stopStrings()" class="" id="btnStop"></button>
+            <button onclick="holdSound()" class="" id="btnHold"></button>
+        </div>
+        <div class="pick">
+            <button onclick="usePick()" class="" id="btnPick"></button>
+        </div>
+    </footer>
+    
+    <audio id="as1" src="https://cdn.josetxu.com/audio/egs-1.mp3"></audio>
+    <audio id="as2" src="https://cdn.josetxu.com/audio/egs-2.mp3"></audio>
+    <audio id="as3" src="https://cdn.josetxu.com/audio/egs-3.mp3"></audio>
+    <audio id="as4" src="https://cdn.josetxu.com/audio/egs-4.mp3"></audio>
+    <audio id="as5" src="https://cdn.josetxu.com/audio/egs-5.mp3"></audio>
+    <audio id="as6" src="https://cdn.josetxu.com/audio/egs-6.mp3"></audio>
+</body>
+<script>
+var pick = false;
+const eps = document.querySelector('body').style;
+eps.setProperty("--vol", '0.5' );
+
+// SOUNDS
+var s1 = elem('as1');
+var s2 = elem('as2');
+var s3 = elem('as3');
+var s4 = elem('as4');
+var s5 = elem('as5');
+var s6 = elem('as6');
+
+// FUNCTIONS 
+
+// Short getElementById  
+function elem(id){ return document.getElementById(id); }
+
+// Check Audio
+function isPlaying(aId) { return !aId.paused; }
+
+
+// Pick String 
+function pickString(thisString){
+	if(pick == true) clickString(thisString);
+}
+
+// Click String
+function clickString(thisString) {
+	//reset
+	if (isPlaying(window[thisString])) clearInterval(soundTimer); 
+	window[thisString].pause();
+	window[thisString].currentTime = 0;	
+	elem(thisString).className = "string ";
+    elem(thisString).offsetHeight; 
+    elem(thisString).style.animation = null;
+	//play
+	window[thisString].play();
+	elem('tuner-title').className='imgTitle';
+	elem(thisString).classList.add('playing-sound');
+	elem(thisString+'Note').className = "lightOn";
+	elem(thisString+'Nota').className = "lightOn";
+	//stop	
+	var soundTimer = setInterval(function() {
+		if (!isPlaying(window[thisString])) {
+			if(window[thisString].loop != true){
+				elem(thisString).className = "string";
+				elem(thisString+'Note').className = "";
+				elem(thisString+'Nota').className = "";
+				if(document.querySelectorAll('.playing-sound').length==0){
+					elem('tuner-title').classList.remove('imgTitle');
+				}
+			}
+			clearInterval(soundTimer);
+		}
+	}, 200);
+}
+
+// Hold Sound
+function holdSound(){
+	if(s1.loop != true){
+		s1.loop = s2.loop = s3.loop = s4.loop = s5.loop = s6.loop = true;
+		elem('btnHold').className = "active";
+	} else {
+		s1.loop = s2.loop = s3.loop = s4.loop = s5.loop = s6.loop = false;
+		elem('btnHold').className = "";
+		s1.pause(); s2.pause(); s3.pause(); s4.pause(); s5.pause(); s6.pause();	
+		stopStrings();
+	}
+}
+
+// Stop Strings
+function stopStrings(){
+	elem('tuner-title').className='';
+	s1.pause(); s2.pause(); s3.pause(); s4.pause(); s5.pause(); s6.pause();
+	var auxString = document.querySelectorAll('.playing-sound');	
+	for (var x in auxString) {
+		if(auxString[x]!==undefined){
+			auxString[x].className = "string";
+		}
+	}
+	var auxNote = document.querySelectorAll(".lightOn");
+	for (x in auxNote) {
+		if(auxNote[x]!==undefined){
+			auxNote[x].className = "";
+		}
+	}
+}
+
+// Use Pick
+function usePick(){
+	if(elem('btnPick').className == ''){
+		elem('btnPick').className = 'active';
+		pick = true;
+		elem('guitar-body').classList.add('pickActive');		
+		elem('guitar-body').addEventListener('mousemove', pickChecked);		
+	} else {
+		elem('btnPick').className = '';
+		pick = false;
+		elem('guitar-body').classList.remove('pickActive');		
+		elem('guitar-body').removeEventListener('mousemove', pickChecked);
+	}
+}
+
+// Pick Checked
+function pickChecked (event){
+	var target = elem('move-pick');
+	var xposition = (event.clientX - target.offsetLeft - target.offsetWidth/2);
+	var yposition = (event.clientY - target.offsetTop - target.offsetHeight/2);
+	target.style.transform = "translate("+ parseInt(xposition+40) + "px," + parseInt(yposition-40) + "px)";
+	console.log(event);
+}
+
+// Set Volume
+function setVolume(val) {
+	eps.setProperty("--vol", val );
+	elem('volume').nextElementSibling.innerText=val*10;
+	var a = document.querySelectorAll('audio');
+	for (var i = 0; i<a.length; i++){
+		a[i].volume = val;
+	}
+}
+
+// Change Guitar
+function changeGuitar(id){
+	stopStrings();
+	elem('guitar-body').classList.toggle('e-classic');
+	elem('guitar-body').classList.toggle('e-electric');
+	var btns = document.querySelectorAll('.change-guitar');
+	for (var i = 0; i<btns.length; i++) {
+		btns[i].disabled=false;
+	}
+	elem(id).classList.add('active');
+	elem(id).disabled=true;
+	changeStrings();
+}
+
+// Chage Strings
+function changeStrings() {
+	if(elem('guitar-body').classList.contains('e-classic')) {
+		s1.src="https://cdn.josetxu.com/audio/cgs-1.mp3";
+		s2.src="https://cdn.josetxu.com/audio/cgs-2.mp3";
+		s3.src="https://cdn.josetxu.com/audio/cgs-3.mp3";
+		s4.src="https://cdn.josetxu.com/audio/cgs-4.mp3";
+		s5.src="https://cdn.josetxu.com/audio/cgs-5.mp3";
+		s6.src="https://cdn.josetxu.com/audio/cgs-6.mp3";
+	} else {
+		s1.src="https://cdn.josetxu.com/audio/egs-1.mp3";
+		s2.src="https://cdn.josetxu.com/audio/egs-2.mp3";
+		s3.src="https://cdn.josetxu.com/audio/egs-3.mp3";
+		s4.src="https://cdn.josetxu.com/audio/egs-4.mp3";
+		s5.src="https://cdn.josetxu.com/audio/egs-5.mp3";
+		s6.src="https://cdn.josetxu.com/audio/egs-6.mp3";
+	}
+}</script>
+</html>
