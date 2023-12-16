@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="kin.html">
+
+    <link rel="stylesheet" href="k.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <fieldset>
+
+        <legend><h1>THIS IS TEST FORM</h1></legend>
+
+        <!-- <form name="myform"> -->
+
+        <div>
+
+            <label>First Name:<input type="text" id="fname" placeholder="Enter your first name"></label>
+
+        </div><br>
+
+        <div>
+
+            <label>Last Name:<input type="text" id="lname" placeholder="Enter your last name"></label>
+
+        </div><br>
+
+        <div>
+
+            <label>Date of birth: <input type="date" id="DateObirth"></label>
+
+        </div><br>
+
+        <div>
+
+            <label>Your email id:<input type="email" id="youremailid" placeholder="Enter your email id"></label>
+
+        </div><br>
+
+        <div>
+
+            <label>Your phone number:<input type="number" id="yourphonenumber" placeholder="Enter your phone number"></label>
+
+        </div><br>
+
+        <div>
+
+            <div>
+
+                <label>Institution name:<input type="text" id="institutionname" placeholder="Enter your institution name"></label>
+
+            </div><br>
+
+            <label>Select your gender:</label>
+
+            <input type="radio" name="gen" id="male">
+
+            <label for="male">Male</label>
+
+            <input type="radio" name="gen" id="female">
+
+            <label for="female">Female</label>
+
+            <input type="radio" name="gen" id="others">
+
+            <label for="others">Others</label>
+
+        </div><br>
+
+
+        <input type="button" value="Submit" onclick="submitFun()">
+
+        <!-- </form> -->
+
+    </fieldset>
+
+
+    <fieldset>
+
+        <legend>Information</legend>
+
+        <div>
+
+            <label>Name: </label> <label id="lblnamfname"></label> <label id="lblnamlname"></label><br>
+
+            <label>DOB: </label> <label id="lbldob"></label><br>
+
+            <label>Email: </label> <label id="lblmail"></label><br>
+
+            <label>Phone No: </label> <label id="lblphnno"></label><br>
+
+            <label>Gender: </label> <label id="lblgen"></label><br>
+
+            <label>Institution name: </label> <label id="lblinstitution"></label><br>
+
+        </div>
+
+    </fieldset>
+
+
+    <script>
+
+        function submitFun() {
+
+            var fname = document.getElementById("fname").value;
+
+            var lname = document.getElementById("lname").value;
+
+            var dob = document.getElementById("DateObirth").value;
+
+            var mail = document.getElementById("youremailid").value;
+
+            var phno = document.getElementById("yourphonenumber").value;
+
+            var institution = document.getElementById("institutionname").value;
+
+            
+
+            // Get selected gender
+
+            var genElements = document.getElementsByName("gen");
+
+            var selectedGender = "";
+
+            for (var i = 0; i < genElements.length; i++) {
+
+                if (genElements[i].checked) {
+
+                    selectedGender = genElements[i].nextElementSibling.textContent;
+
+                    break;
+
+                }
+
+            }
+
+
+            document.getElementById("lblnamfname").textContent = fname;
+
+            document.getElementById("lblnamlname").textContent = lname;
+
+            document.getElementById("lbldob").textContent = dob;
+
+            document.getElementById("lblmail").textContent = mail;
+
+            document.getElementById("lblphnno").textContent = phno;
+
+            document.getElementById("lblinstitution").textContent = institution;
+
+            document.getElementById("lblgen").textContent = selectedGender;
+
+        };
+
+    </script>
+
+</body>
+
+</html>
