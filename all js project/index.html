@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+ 
+</head>
+<Marquee><Legend style="color: blue;"> <h1>ALL JAVASCRIPT PROJECT MADE BY KINGSHUK</h1> </Legend></Marquee>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="keys">
+      <button class="operator" onclick="addToDisplay('+')">+</button>
+      <button class="operator" onclick="addToDisplay('-')">-</button>
+      <button class="operator" onclick="addToDisplay('*')">*</button>
+      <button class="operator" onclick="addToDisplay('/')">/</button>
+      <button onclick="addToDisplay('7')">7</button>
+      <button onclick="addToDisplay('8')">8</button>
+      <button onclick="addToDisplay('9')">9</button>
+      <button onclick="addToDisplay('4')">4</button>
+      <button onclick="addToDisplay('5')">5</button>
+      <button onclick="addToDisplay('6')">6</button>
+      <button onclick="addToDisplay('1')">1</button>
+      <button onclick="addToDisplay('2')">2</button>
+      <button onclick="addToDisplay('3')">3</button>
+      <button onclick="addToDisplay('0')">0</button>
+      <button onclick="clearDisplay()">C</button>
+      <button class="calculate" onclick="calculate()">=</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</body>
+
+
+
+<body>
+  <div class="quote-container">
+    <p id="quote">Click the button to get a random quote!</p>
+    <button onclick="getRandomQuote()">Generate Quote</button>
+  </div>
+  <script src="Random Quote Generator.js"></script>
+  <link rel="stylesheet" href="Random Quote Generator.css">
+</body>
+
+
+<body>
+  <div class="todo-container">
+    <h2>My To-Do List</h2>
+    <ul id="todo-list"></ul>
+    <input type="text" id="new-task" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+  </div>
+  <link rel="stylesheet" href="To-Do List.css">
+  <script src="To-Do List.js"></script>
+</body>
+
+
+<!-- <marquee> -->
+<body>
+  <div class="clock-container">
+    <h1 id="digital-clock">12:00:00</h1>
+  </div>
+  <script src="degital clock.js"></script>
+  <link rel="stylesheet" href="degital clock.css">
+</body>
+<!-- </marquee> -->
+
+<body>
+  <div class="color-flipper-container">
+    <div id="color-display">#FFFFFF</div>
+    <button onclick="changeColor()">Change Color</button>
+  </div>
+  <script src="color picar.js"></script>
+  <link rel="stylesheet" href="color picar.css">
+</body>
+
+
+<body>
+  <div class="palindrome-container">
+    <label for="input-text">Enter a word or phrase:</label>
+    <input type="text" id="input-text">
+    <button onclick="checkPalindrome()">Check Palindrome</button>
+    <p id="result"></p>
+  </div>
+  <script src="Palindrome Checker.js"></script>
+  <link rel="stylesheet" href="Palindrome Checker.css">
+</body>
+
+
+<body>
+  <div class="tip-calculator-container">
+    <label for="bill-amount">Bill Amount:</label>
+    <input type="number" id="bill-amount" placeholder="Enter bill amount">
+    <label for="tip-percentage">Tip Percentage:</label>
+    <input type="number" id="tip-percentage" placeholder="Enter tip percentage">
+    <button onclick="calculateTip()">Calculate Tip</button>
+    <p id="tip-amount"></p>
+  </div>
+  <script src="tip calculetar.js"></script>
+  <link rel="stylesheet" href="tip calculetar.css">
+</body>
+
+
+
+<body>
+  <div class="bmi-calculator-container">
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Enter height in cm">
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" placeholder="Enter weight in kg">
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <p id="bmi-result"></p>
+  </div>
+  <script src="BMI calculetAR.js"></script>
+  <link rel="stylesheet" href="BMI calculetAR.css">
+</body>
+
+
+
+<body>
+  <div class="number-guessing-container">
+    <p>Guess a number between 1 and 100:</p>
+    <input type="number" id="guess-input" placeholder="Enter your guess">
+    <button onclick="checkGuess()">Check Guess</button>
+    <p id="guess-result"></p>
+  </div>
+  <script src="NUMBER.js"></script>
+  <link rel="stylesheet" href="NUMBER.css">
+</body>
+
+
+
+</html>

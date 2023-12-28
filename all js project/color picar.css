@@ -1,0 +1,27 @@
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  } */
+  
+  .color-flipper-container {
+    text-align: center;
+  }
+  
+  #color-display {
+    font-size: 2em;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  

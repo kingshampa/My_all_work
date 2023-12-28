@@ -1,0 +1,29 @@
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  } */
+  
+  .tip-calculator-container {
+    text-align: center;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 1em;
+    margin: 5px;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  #tip-amount {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  

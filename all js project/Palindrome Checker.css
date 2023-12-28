@@ -1,0 +1,31 @@
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  } */
+  
+  .palindrome-container {
+    text-align: center;
+  }
+  
+  #input-text {
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+  }
+  
+  #result {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  
